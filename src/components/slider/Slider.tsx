@@ -44,7 +44,7 @@ font-size: 16px;
 letter-spacing: 0.06em;
 text-transform: uppercase;
 display: inline-block;
-margin: 22px 0 42px;
+margin: 22px 0 32px;
 `;
 
 const Pagination = styled.div`
