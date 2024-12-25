@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { SectionTitle } from '../../../components/SectionTitle';
 import { FlexWrapper } from '../../../components/FlexWrapper';
 import { Work } from './work/Work';
@@ -6,12 +5,27 @@ import socialImg from '../../../assets/images/proj-1_1.webp';
 import timer from '../../../assets/images/proj-2_1.webp';
 import { Container } from '../../../components/Container';
 import { TabMenu } from './tabMenu/TabMenu';
+import React from 'react';
+import {S} from './Works_Styles'
 
 const worksItems = ['All', 'landing page', 'React', 'spa'];
 
-export const Works = () => {
+const workData = [
+  {
+    title: 'Social Network',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim. Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+    src: socialImg,
+  },
+  {
+    title: 'Timer',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim. Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+    src: timer,
+  },
+];
+
+export const Works: React.FC = () => {
   return (
-    <StyledWorks>
+    <S.Works>
       <Container>
         <SectionTitle>My Works</SectionTitle>
         <TabMenu menuItems={worksItems}></TabMenu>
@@ -20,24 +34,11 @@ export const Works = () => {
           align={'flex-start'}
           wrap={'wrap'}
         >
-          <Work
-            title={'Social Network'}
-            text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-            src={socialImg}
-          ></Work>
-          <Work
-            title={'Timer'}
-            text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-            src={timer}
-          ></Work>
+          {workData.map((w, index) => {
+            return <Work title={w.title} text={w.text} src={w.src}></Work>;
+          })}
         </FlexWrapper>
       </Container>
-    </StyledWorks>
+    </S.Works>
   );
 };
-
-const StyledWorks = styled.section`
-  ${FlexWrapper} {
-    gap: 30px;
-  }
-`;
